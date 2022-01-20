@@ -21,16 +21,25 @@ string isPrivate(int feed) {
 	}
 }
 
+string isVerified(bool verified) {
+	if (verified) {
+		return "verified";
+	}
+	else {
+		return "unverified";
+	}
+}
+
 string getUser(int uid) {
 	string result;
 	switch (uid) {
-	case 1: result = "Jack";
+	case 1: result = "Joe";
 		break;
 	case 2: result = "Jack";
 		break;
-	case 3: result = "Jack";
+	case 3: result = "jill";
 		break;
-	default: result = "Jack";
+	default: result = "undefined";
 	}
 	return result;
 }
@@ -95,5 +104,21 @@ int main() {
 		cout << feedtwo << " is greater than " << feedone << " in ASCII\n";
 	}
 
+	//declare a structure that represents a single user
+	struct User {
+		string fname;
+		string lname;
+		int uid;
+		bool verified;
+		string email;
+	}; // semicolon required
+	
+	//create an example of a user, where each field has a value
+	User user1 = { "Joe", "Mama", 1, false, "joemama@gmail.com" };
+
+	cout << user1.fname << "'s account is " << isVerified(user1.verified) << "\n";
+	cout << "\n##########VERIFYING USER###########\n";
+	user1.verified = true;
+	cout << user1.fname << "'s account is " << isVerified(user1.verified) << "\n";
 }
 
