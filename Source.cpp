@@ -6,17 +6,35 @@
 //lets us use cout intead of having to do std::cout
 using namespace std;
 
-string isPrivate(int num) {
-	if (num == 0) {
+//lets us use string normally instead of having to preface every variable
+using std::string;
+
+string isPrivate(int feed) {
+	if (feed == 0) {
 		return "private";
 	}
-	else if (num == 1) {
+	else if (feed == 1) {
 		return "public";
 	}
 	else {
 		return "undefined";
 	}
 }
+
+string getUser(int uid) {
+	string result;
+	switch (uid) {
+	case 1: result = "Jack";
+		break;
+	case 2: result = "Jack";
+		break;
+	case 3: result = "Jack";
+		break;
+	default: result = "Jack";
+	}
+	return result;
+}
+
 
 int main() {
 
@@ -35,7 +53,7 @@ int main() {
 	//third column is feed, feed one (public) or feed two (private)
 	posts[2][0] = "0";
 	
-	cout << "The post for userID " << posts[1][0] << " is " << "\"" << posts[0][0] << "\"" << " and the post is type is " << isPrivate(stoi(posts[2][0])) << "\n";
+	cout << "The post for the user " << getUser(stoi(posts[1][0])) << " is " << "\"" << posts[0][0] << "\"" << " and the post is type is " << isPrivate(stoi(posts[2][0])) << ".\n";
 
 	//learning nested arrays
 	string users[] = { "1","2","3" };
@@ -43,6 +61,7 @@ int main() {
 	string* users_ptr = users;
 	//create a pointer equal to the address of the first element of the array
 	string* first_user_ptr = &users[0];
+
 	//print out each variable, demonstrating that they all point to the same memory location --- should have same result
 	cout << "Printing users array: " << users << "\n";
 	cout << "Printing users pointer: " << users_ptr << "\n";
@@ -58,8 +77,23 @@ int main() {
 	cout << "Using users_ptr as array: " << users_ptr[1] << "\n";
 	cout << "Using first_user_ptr as array: " << first_user_ptr[1] << "\n";
 	//memory location would be increased
-	cout << "first_user_ptr addding one: " << first_user_ptr << "\n";
+	cout << "first_user_ptr: " << first_user_ptr << "\n";
 	cout << "first_user_ptr addding one: " << first_user_ptr + 1 << "\n";
-	cout << "first_user_ptr addding one: " << *(first_user_ptr + 1) << "\n";
+	cout << "first_user_ptr addding one while dereferencing: " << *(first_user_ptr + 1) << "\n";
+
+	//demonstrating that strings in c++ are treated like arrays
+	string timeline = "Feed";
+	string feedone = timeline + " public";
+	string feedtwo = timeline + " private";
+	
+	cout << timeline << "\n";
+	cout << "First feed in timeline: " << feedone << "\n";
+	cout << "Second feed in timeline: " << feedtwo << "\n";
+
+	//performs string comparison based on ASCII table
+	if (feedtwo > feedone) {
+		cout << feedtwo << " is greater than " << feedone << " in ASCII\n";
+	}
+
 }
 
