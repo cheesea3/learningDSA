@@ -119,6 +119,18 @@ int main() {
 	cout << user1.fname << "'s account is " << isVerified(user1.verified) << "\n";
 	cout << "\n##########VERIFYING USER###########\n";
 	user1.verified = true;
-	cout << user1.fname << "'s account is " << isVerified(user1.verified) << "\n";
+	cout << user1.fname << "'s account is " << isVerified(user1.verified) << "\n\n";
+
+	//create a regular string variable
+	string real_name = user1.fname + " " + user1.lname;
+	string& username = real_name;
+	cout << "Real name: " << real_name << "\n";
+	cout << "Username: " << username << "\n";
+
+	//modify username to protect identity
+	username = "cheesea3";
+
+	cout << "\"Modified\" name: " << real_name << "\n";
+	cout << "Protected username: " << username << "\n";
 }
 
